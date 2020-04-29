@@ -1,0 +1,14 @@
+{
+  "name": "rest-timer",
+  "version": "1.0.0",
+  "description": "user inputs time of productivity. When it is finished it warns the user to take a break.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Pilar Chavez",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^8.2.4"
+  }
+}
