@@ -7,6 +7,9 @@ const {app, BrowserWindow, Menu, ipcMain} = electron;
 let mainWindow;
 let timerWindow;
 
+//uncomment for productin environment
+//process.env.NODE_ENV = 'production';
+
 app.on('ready', () => {
   mainWindow = new BrowserWindow({
     webPreferences: {
@@ -33,24 +36,26 @@ app.on('ready', () => {
 const mainMenuTemplate = [
   {
     label: 'File',
-    subMenu: [
+    submenu: [
       {
         label:'Quit',
-        //shsortcut to quit
+        //shortcut for ctrl q. testing is its a mac or win/linux
         accelerator: process.platform == 'darwin' ? 'Command+Q' : 'Ctrl + Q',
+
         click() {
           app.quit();
         }
       }
-    ]
+
+  ]
   }
 ]
 
-//Add dev tools if not in production
+//Dev tools when not in production
 if(process.env.NODE_ENV !== 'production') {
   mainMenuTemplate.push({
     label: 'Dev Tools',
-    subMenu: [
+    submenu: [
       {
         label: 'Toggle Devtools',
         accelerator: process.platform == 'darwin' ? 'Command+I' : 'Ctrl + I',
