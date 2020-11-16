@@ -13,28 +13,28 @@
       </div>
     </nav>
     <div class="container">
-      <div class="row">
-        <div class="col s12">
-            <div id="app">
-            </div>
+        <div class="row">
+          <div class="col s12">
+              <div id="app">
+              </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            <button class="btn waves-effect waves-light green" type="submit" name="action" onclick="startTimer()">Start
+              <i class="material-icons right"></i>
+            </button>
+          </div>
+          <div class="col s12">
+            <button class="btn waves-effect waves-teal pink" type="submit" name="action" onclick="selectTime()">Select Time
+              <i class="material-icons right"></i>
+            </button>
+          </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col s12">
-          <button class="btn waves-effect waves-light" type="submit" name="action" onclick="startTimer()">Start
-            <i class="material-icons right"></i>
-          </button>
-        </div>
-      </div>
-      <div class="divider"></div>
-      <div class="section">
-
-      </div>
-      </div>
-    </div>
     <script>
     // Credit: Mateusz Rybczonec
-
+    //don't change these. It just sets up the circle length.
     const FULL_DASH_ARRAY = 283;
     const WARNING_THRESHOLD = 10;
     const ALERT_THRESHOLD = 5;
@@ -53,7 +53,7 @@
     }
     };
 
-    const TIME_LIMIT = 3;
+    const TIME_LIMIT = 5;
     let timePassed = 0;
     let timeLeft = TIME_LIMIT;
     let timerInterval = null;
@@ -85,7 +85,7 @@
 
     function setUpClock() {
 
-      const TIME_LIMIT = 3;
+      const TIME_LIMIT = 234;
       let timePassed = 0;
       let timeLeft = TIME_LIMIT;
       let timerInterval = null;
@@ -122,13 +122,15 @@
     //when timer reaches 0
     function onTimesUp() {
       //clearInterval(timerInterval);
-      document.getElementsByClassName("btn waves-effect waves-light")[0].style.visibility = 'visible';
+      document.getElementsByClassName("btn waves-effect waves-light green")[0].style.visibility = 'visible';
+      document.getElementsByClassName("btn waves-effect waves-teal pink")[0].style.visibility = 'visible';
       setUpClock();
     }
 
     function startTimer() {
       //hide the start button
-      document.getElementsByClassName("btn waves-effect waves-light")[0].style.visibility = 'hidden';
+      document.getElementsByClassName("btn waves-effect waves-light green")[0].style.visibility = 'hidden';
+      document.getElementsByClassName("btn waves-effect waves-teal pink")[0].style.visibility = 'hidden';
       //add a pause function for pausing the clock
 
       timerInterval = setInterval(() => {

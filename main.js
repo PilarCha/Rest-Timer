@@ -12,6 +12,11 @@ let timerWindow;
 
 app.on('ready', () => {
   mainWindow = new BrowserWindow({
+    width:300,
+    height:490,
+    x:2260,
+    y:0,
+    frame: false,
     webPreferences: {
       nodeIntegration: true
     }
