@@ -37,6 +37,30 @@ app.on('ready', () => {
   Menu.setApplicationMenu(mainMenu)
 })
 
+//select timer window
+
+selectTimerWindow = () => {
+  timerWindow = new BrowserWindow ({
+    width:300,
+    height: 490,
+    title:'Select Time Limit',
+    webPreferences: {
+      nodeIntegration: true
+    }
+  });
+
+  //load html into window
+  timerWindow.loadURL(url.format({
+    pathname: path.join(__dirname,'views/timerWindow.html'),
+    protocol:'file',
+    slashes:true
+  }));
+  // garbage collection handle
+  timerWindow.on('close', () => {
+    timerWindow = null;
+  })
+}
+
 //creating the file navbar system
 const mainMenuTemplate = [
   {
@@ -51,8 +75,7 @@ const mainMenuTemplate = [
           app.quit();
         }
       }
-
-  ]
+    ]
   }
 ]
 
