@@ -9,7 +9,7 @@ let timerWindow;
 
 //uncomment for productin environment
 //process.env.NODE_ENV = 'production';
-
+//Logic for windows
 app.on('ready', () => {
   mainWindow = new BrowserWindow({
     width:300,
@@ -38,7 +38,6 @@ app.on('ready', () => {
 })
 
 //select timer window
-
 selectTimerWindow = () => {
   timerWindow = new BrowserWindow ({
     width:300,
@@ -60,6 +59,9 @@ selectTimerWindow = () => {
     timerWindow = null;
   })
 }
+
+// event listeners
+ipcMain.on()
 
 //creating the file navbar system
 const mainMenuTemplate = [
