@@ -26,7 +26,7 @@
             </button>
           </div>
           <div class="col s12">
-            <button class="btn waves-effect waves-teal pink" type="submit" name="action" onclick="selectTime()">Select Time
+            <button class="btn waves-effect waves-teal pink" type="submit" name="action" onclick="openTimerWindow()">Select Time
               <i class="material-icons right"></i>
             </button>
           </div>
@@ -82,6 +82,13 @@
       )}</span>
     </div>
     `;
+
+    function openTimerWindow() {
+      const electron = require('electron');
+      const {ipcRenderer} = electron;
+
+      ipcRenderer.send('openTimerWindow');
+    }
 
     function setUpClock() {
 

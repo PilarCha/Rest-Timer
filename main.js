@@ -38,7 +38,7 @@ app.on('ready', () => {
 })
 
 //select timer window
-selectTimerWindow = () => {
+openTimerWindow = () => {
   timerWindow = new BrowserWindow ({
     width:300,
     height: 490,
@@ -61,7 +61,11 @@ selectTimerWindow = () => {
 }
 
 // event listeners
-ipcMain.on()
+// ipcMain.on('selectedTime', ())
+
+ipcMain.on('openTimerWindow', () => {
+  openTimerWindow();
+})
 
 //creating the file navbar system
 const mainMenuTemplate = [
