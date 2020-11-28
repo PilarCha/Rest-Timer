@@ -10,32 +10,81 @@ let timerWindow;
 //uncomment for productin environment
 //process.env.NODE_ENV = 'production';
 //Logic for windows
-app.on('ready', () => {
-  mainWindow = new BrowserWindow({
+// app.on('ready', () => {
+//   mainWindow = new BrowserWindow({
+//     width:300,
+//     height:490,
+//     x:2260,
+//     y:0,
+//     frame: false,
+//     webPreferences: {
+//       nodeIntegration: true
+//     }
+//   });
+//   //Load the html for mainWIndow
+//   mainWindow.loadURL(url.format({
+//     pathname: path.join(__dirname, 'views/mainWindow.html'),
+//     protocol: 'file:',
+//     slashes: true
+//   }));
+//   //Quit app when closing main window if needed
+//   mainWindow.on('closed', () => {
+//     app.quit();
+//   });
+//   //build menu from template
+//   const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
+//   //Insert Menu
+//   Menu.setApplicationMenu(mainMenu)
+// })
+app.on('ready' , () => {
+  timerWindow = new BrowserWindow ({
     width:300,
-    height:490,
-    x:2260,
-    y:0,
+    height: 490,
+    title:'Select Time Limit',
     frame: false,
     webPreferences: {
       nodeIntegration: true
     }
   });
-  //Load the html for mainWIndow
-  mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'views/mainWindow.html'),
-    protocol: 'file:',
-    slashes: true
+
+  //load html into window
+  timerWindow.loadURL(url.format({
+    pathname: path.join(__dirname,'views/timerWindow.html'),
+    protocol:'file',
+    slashes:true
   }));
-  //Quit app when closing main window if needed
-  mainWindow.on('closed', () => {
-    app.quit();
-  });
-  //build menu from template
-  const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
-  //Insert Menu
-  Menu.setApplicationMenu(mainMenu)
+  // garbage collection handle
+  timerWindow.on('close', () => {
+    timerWindow = null;
+  })
 })
+
+openMainWindow = () => {
+  mainWindow = new BrowserWindow({
+      width:300,
+      height:490,
+      x:2260,
+      y:0,
+      frame: false,
+      webPreferences: {
+        nodeIntegration: true
+      }
+    });
+    //Load the html for mainWIndow
+    mainWindow.loadURL(url.format({
+      pathname: path.join(__dirname, 'views/mainWindow.html'),
+      protocol: 'file:',
+      slashes: true
+    }));
+    //Quit app when closing main window if needed
+    mainWindow.on('closed', () => {
+      app.quit();
+    });
+    //build menu from template
+    const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
+    //Insert Menu
+    Menu.setApplicationMenu(mainMenu)
+}
 
 //select timer window
 openTimerWindow = () => {
@@ -73,6 +122,7 @@ ipcMain.on('selectedTime', function (e,id) {
     openTimerWindow();
     return;
   }
+  openMainWindow();
   let seconds = (id/5) * 300
   mainWindow.webContents.send('selectedTime',seconds);
   timerWindow.close();
