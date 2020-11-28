@@ -63,9 +63,20 @@ openTimerWindow = () => {
 
 // event listeners
 // ipcMain.on('selectedTime', ())
-
 ipcMain.on('openTimerWindow', () => {
   openTimerWindow();
+})
+
+ipcMain.on('selectedTime', function (e,id) {
+  if(id == null) {
+    alert("Please Select a time again. Did not go through.")
+    openTimerWindow();
+    return;
+  }
+  let seconds = (id/5) * 300
+  mainWindow.webContents.send('selectedTime',seconds);
+  console.log(seconds);
+  timerWindow.close();
 })
 
 //creating the file navbar system

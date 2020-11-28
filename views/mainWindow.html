@@ -34,6 +34,8 @@
       </div>
     <script>
     // Credit: Mateusz Rybczonec
+    const electron = require('electron');
+    const {ipcRenderer} = electron;
     //don't change these. It just sets up the circle length.
     const FULL_DASH_ARRAY = 283;
     const WARNING_THRESHOLD = 10;
@@ -53,7 +55,7 @@
     }
     };
 
-    const TIME_LIMIT = 5;
+    let TIME_LIMIT = 5;
     let timePassed = 0;
     let timeLeft = TIME_LIMIT;
     let timerInterval = null;
@@ -84,11 +86,15 @@
     `;
 
     function openTimerWindow() {
-      const electron = require('electron');
-      const {ipcRenderer} = electron;
-
       ipcRenderer.send('openTimerWindow');
     }
+
+    //catch seconds sent from select Timer window
+
+    ipcRenderer.on('selectedTime',function(e,seconds) {
+      // TIME_LIMIT = seconds
+      console.log('we made the full circle baby')
+    });
 
     function setUpClock() {
 
@@ -143,9 +149,7 @@
       timerInterval = setInterval(() => {
         timePassed = timePassed += 1;
         timeLeft = TIME_LIMIT - timePassed;
-        document.getElementById("base-timer-label").innerHTML = formatTime(
-          timeLeft
-        );
+        document.getElementById("base-timer-label").innerHTML = formatTime(timeLeft);
         setCircleDasharray();
         setRemainingPathColor(timeLeft);
 

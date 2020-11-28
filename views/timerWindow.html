@@ -28,9 +28,12 @@
       </div>
     </div>
     <script type="text/javascript">
-    
+
       sendSelectedTime = (id) => {
-        alert(id);
+        const electron = require('electron');
+        const {ipcRenderer} = electron;
+
+        ipcRenderer.send('selectedTime', id);
       }
 
       cancel = () => {
