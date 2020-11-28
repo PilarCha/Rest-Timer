@@ -40,6 +40,8 @@ app.on('ready' , () => {
   timerWindow = new BrowserWindow ({
     width:300,
     height: 490,
+    x:2260,
+    y:0,
     title:'Select Time Limit',
     frame: false,
     webPreferences: {
@@ -66,6 +68,7 @@ openMainWindow = () => {
       x:2260,
       y:0,
       frame: false,
+      title:'Select Time',
       webPreferences: {
         nodeIntegration: true
       }
@@ -77,8 +80,9 @@ openMainWindow = () => {
       slashes: true
     }));
     //Quit app when closing main window if needed
-    mainWindow.on('closed', () => {
-      app.quit();
+    mainWindow.on('close', () => {
+      // app.quit();
+      mainWindow = null;
     });
     //build menu from template
     const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
@@ -91,6 +95,8 @@ openTimerWindow = () => {
   timerWindow = new BrowserWindow ({
     width:300,
     height: 490,
+    x:2260,
+    y:0,
     title:'Select Time Limit',
     frame: false,
     webPreferences: {
@@ -114,6 +120,7 @@ openTimerWindow = () => {
 // ipcMain.on('selectedTime', ())
 ipcMain.on('openTimerWindow', () => {
   openTimerWindow();
+  mainWindow.close();
 })
 
 ipcMain.on('selectedTime', function (e,id) {
