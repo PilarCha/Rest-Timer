@@ -9,8 +9,28 @@
   <body>
     <nav>
       <div class="nav-wrapper">
-        <a class="brand-logo center">Rest Timer</a>
+        <a class="brand-logo center">Select Time</a>
       </div>
     </nav>
+    <div class="selectTime">
+      <ul class = "collection">
+        <a href="#!" class ="collection-item" id ="15"><h5>15</h5></a>
+        <a href="#!" class ="collection-item" id ="25"> <h5>25</h5> </a>
+        <a href="#!" class ="collection-item" id ="45"> <h5>45</h5> </a>
+        <a href="#!" class ="collection-item" id ="60"> <h5>1 hour</h5>  </a>
+      </ul>
+    </div>
+    <script type="text/javascript">
+      var li = document.getElementsByTagName("li");
+
+      for (var i = 0 ; i<li.length; i++) {
+        li[i].addEventListener("click", sendSelectedTime())
+      }
+
+      function sendSelectedTime(time) {
+        alert(time.target.attributes.id.value);
+      }
+
+    </script>
   </body>
 </html>

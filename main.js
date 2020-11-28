@@ -43,6 +43,7 @@ openTimerWindow = () => {
     width:300,
     height: 490,
     title:'Select Time Limit',
+    frame: false,
     webPreferences: {
       nodeIntegration: true
     }
