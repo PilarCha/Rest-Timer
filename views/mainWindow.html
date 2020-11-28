@@ -93,6 +93,8 @@
     //catch seconds sent from select Timer window
 
     ipcRenderer.on('selectedTime',function(e,seconds) {
+      const electron = require('electron');
+      const {ipcRenderer} = electron;
       // TIME_LIMIT = seconds
       setUpEverything(seconds);
       alert(seconds);

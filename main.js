@@ -120,7 +120,6 @@ openTimerWindow = () => {
 // ipcMain.on('selectedTime', ())
 ipcMain.on('openTimerWindow', () => {
   openTimerWindow();
-  mainWindow.close();
 })
 
 ipcMain.on('selectedTime', function (e,id) {
@@ -131,6 +130,7 @@ ipcMain.on('selectedTime', function (e,id) {
   }
   openMainWindow();
   let seconds = (id/5) * 300
+  console.log('peepeepoopoo')
   mainWindow.webContents.send('selectedTime',seconds);
   timerWindow.close();
 })
