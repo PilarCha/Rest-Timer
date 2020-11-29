@@ -9,8 +9,36 @@
   <body>
     <nav>
       <div class="nav-wrapper">
-        <a class="brand-logo center">Rest Timer</a>
+        <a class="brand-logo center">Select Time</a>
       </div>
     </nav>
+    <div class="selectTime">
+      <ul class = "collection">
+        <a href="#!" class ="collection-item" onClick="sendSelectedTime(id)" id ="15"><h5>15</h5></a>
+        <a href="#!" class ="collection-item" onClick="sendSelectedTime(id)" id ="25"> <h5>25</h5> </a>
+        <a href="#!" class ="collection-item" onClick="sendSelectedTime(id)" id ="45"> <h5>45</h5> </a>
+        <a href="#!" class ="collection-item" onClick="sendSelectedTime(id)" id ="60"> <h5>1 hour</h5>  </a>
+      </ul>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <button class="btn waves-effect waves-teal red" type="submit" name="action" onclick="cancel()">Cancel
+          <i class="material-icons right"></i>
+        </button>
+      </div>
+    </div>
+    <script type="text/javascript">
+
+      sendSelectedTime = (id) => {
+        const electron = require('electron');
+        const {ipcRenderer} = electron;
+
+        ipcRenderer.send('selectedTime', id);
+      }
+
+      cancel = () => {
+        window.close();
+      }
+    </script>
   </body>
 </html>

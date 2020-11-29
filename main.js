@@ -35,14 +35,18 @@ app.on('ready', () => {
   const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
   //Insert Menu
   Menu.setApplicationMenu(mainMenu)
+  openTimerWindow();
 })
 
 //select timer window
-selectTimerWindow = () => {
+openTimerWindow = () => {
   timerWindow = new BrowserWindow ({
     width:300,
     height: 490,
+    x:2260,
+    y:0,
     title:'Select Time Limit',
+    frame: false,
     webPreferences: {
       nodeIntegration: true
     }
@@ -61,7 +65,22 @@ selectTimerWindow = () => {
 }
 
 // event listeners
-ipcMain.on()
+// ipcMain.on('selectedTime', ())
+ipcMain.on('openTimerWindow', () => {
+  openTimerWindow();
+})
+
+ipcMain.on('selectedTime', function (e,id) {
+  if(id == null) {
+    alert("Please Select a time again. Did not go through.")
+    openTimerWindow();
+    return;
+  }
+  let seconds = (id/5) * 300
+  mainWindow.webContents.send('selectedTime',seconds);
+  console.log(seconds);
+  timerWindow.close();
+})
 
 //creating the file navbar system
 const mainMenuTemplate = [
