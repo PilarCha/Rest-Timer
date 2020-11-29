@@ -84,6 +84,8 @@
         )}</span>
       </div>
       `;
+
+      startTimer(time)
     }
 
     function openTimerWindow() {
@@ -91,11 +93,8 @@
     }
 
     //catch seconds sent from select Timer window
-
     ipcRenderer.on('selectedTime',function(e,seconds) {
-      // TIME_LIMIT = seconds
       setUpEverything(seconds);
-      alert(seconds);
     });
 
     function setUpClock() {
@@ -142,15 +141,15 @@
       setUpClock();
     }
 
-    function startTimer() {
+    function startTimer(time) {
       //hide the start button
       document.getElementsByClassName("btn waves-effect waves-light green")[0].style.visibility = 'hidden';
       document.getElementsByClassName("btn waves-effect waves-teal pink")[0].style.visibility = 'hidden';
+      alert('howdy howdy')
       //add a pause function for pausing the clock
-
       timerInterval = setInterval(() => {
         timePassed = timePassed += 1;
-        timeLeft = TIME_LIMIT - timePassed;
+        timeLeft = time - timePassed;
         document.getElementById("base-timer-label").innerHTML = formatTime(timeLeft);
         setCircleDasharray();
         setRemainingPathColor(timeLeft);

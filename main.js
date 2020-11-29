@@ -35,6 +35,7 @@ app.on('ready', () => {
   const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
   //Insert Menu
   Menu.setApplicationMenu(mainMenu)
+  openTimerWindow();
 })
 
 //select timer window
@@ -42,6 +43,8 @@ openTimerWindow = () => {
   timerWindow = new BrowserWindow ({
     width:300,
     height: 490,
+    x:2260,
+    y:0,
     title:'Select Time Limit',
     frame: false,
     webPreferences: {
