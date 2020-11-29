@@ -78,7 +78,6 @@ ipcMain.on('selectedTime', function (e,id) {
   }
   let seconds = (id/5) * 300
   mainWindow.webContents.send('selectedTime',seconds);
-  console.log(seconds);
   timerWindow.close();
 })
 
