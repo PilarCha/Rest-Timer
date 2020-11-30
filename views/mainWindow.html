@@ -97,15 +97,18 @@
     //when timer reaches 0
     function onTimesUp() {
       //clearInterval(timerInterval);
-      document.getElementsByClassName("btn waves-effect waves-light green")[0].style.visibility = 'visible';
-      document.getElementsByClassName("btn waves-effect waves-teal pink")[0].style.visibility = 'visible';
+      document.getElementsByClassName("row")[1].style.display = 'block';
+      document.getElementsByClassName("row")[1].style.display = 'block';
+      document.getElementsByTagName("nav")[0].style.display = 'block';
       openTimerWindow();
     }
 
     function startTimer() {
       //hide the start button
-      document.getElementsByClassName("btn waves-effect waves-light green")[0].style.visibility = 'hidden';
-      document.getElementsByClassName("btn waves-effect waves-teal pink")[0].style.visibility = 'hidden';
+      document.getElementsByClassName("row")[1].style.display = 'none';
+      document.getElementsByClassName("row")[1].style.display = 'none';
+      document.getElementsByTagName("nav")[0].style.display = 'none';
+      window.resizeTo(225,209);
       //add a pause function for pausing the clock
       timerInterval = setInterval(() => {
         timePassed = timePassed += 1;
@@ -117,6 +120,7 @@
         if (timeLeft === 0) {
           // onTimesUp();
           location.reload();
+          window.resizeTo(300,429);
         }
       }, 1000);
     }

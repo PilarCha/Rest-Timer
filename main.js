@@ -13,7 +13,7 @@ let timerWindow;
 app.on('ready', () => {
   mainWindow = new BrowserWindow({
     width:300,
-    height:490,
+    height:429,
     x:2260,
     y:0,
     frame: false,
@@ -42,7 +42,7 @@ app.on('ready', () => {
 openTimerWindow = () => {
   timerWindow = new BrowserWindow ({
     width:300,
-    height: 490,
+    height: 429,
     x:2260,
     y:0,
     title:'Select Time Limit',

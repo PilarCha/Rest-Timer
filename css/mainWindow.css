@@ -50,7 +50,6 @@ body {
 }
 
 .base-timer__path-remaining.green {
-  /* color: rgb(65, 184, 131); */
   color: #26a69a;
 }
 
