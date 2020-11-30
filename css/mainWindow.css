@@ -1,3 +1,6 @@
+body {
+  background-color:#222222;
+}
 
 .row {
   text-align: center;
@@ -33,7 +36,7 @@
 
 .base-timer__path-elapsed {
   stroke-width: 7px;
-  stroke: grey;
+  stroke: #222222;
 }
 
 .base-timer__path-remaining {
@@ -47,7 +50,8 @@
 }
 
 .base-timer__path-remaining.green {
-  color: rgb(65, 184, 131);
+  /* color: rgb(65, 184, 131); */
+  color: #26a69a;
 }
 
 .base-timer__path-remaining.orange {
@@ -66,5 +70,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 48px;
+  font-size: 45px;
+  color: #26a69a;
 }

@@ -1,3 +1,7 @@
+body {
+  background-color:#222222;
+}
+
 h5 {
   text-align: center;
 }
@@ -8,4 +12,8 @@ h5 {
 
 .row {
   text-align: center;
+}
+
+.collection-item {
+  background-color: #222222 !important;
 }
