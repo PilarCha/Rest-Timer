@@ -15,7 +15,7 @@ app.on('ready', () => {
     width:300,
     height:429,
     x:2260,
-    y:0,
+    y:990,
     frame: false,
     webPreferences: {
       nodeIntegration: true
@@ -48,7 +48,7 @@ openTimerWindow = () => {
     width:300,
     height: 429,
     x:2260,
-    y:0,
+    y:990,
     title:'Select Time Limit',
     frame: false,
     webPreferences: {

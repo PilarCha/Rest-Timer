@@ -110,6 +110,7 @@
       document.getElementsByClassName("row")[1].style.display = 'none';
       document.getElementsByTagName("nav")[0].style.display = 'none';
       window.resizeTo(225,209);
+      window.moveTo(2350,1000);
       ipcRenderer.send('topOrBottom',true);
       //add a pause function for pausing the clock
       timerInterval = setInterval(() => {
@@ -124,6 +125,7 @@
           openTimerWindow();
           location.reload();
           window.resizeTo(300,429);
+          window.moveTo(2260,1000);
         }
       }, 1000);
     }
