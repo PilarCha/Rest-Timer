@@ -109,6 +109,7 @@
       document.getElementsByClassName("row")[1].style.display = 'none';
       document.getElementsByTagName("nav")[0].style.display = 'none';
       window.resizeTo(225,209);
+      ipcRenderer.send('alwaysOnTop');
       //add a pause function for pausing the clock
       timerInterval = setInterval(() => {
         timePassed = timePassed += 1;

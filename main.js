@@ -21,7 +21,7 @@ app.on('ready', () => {
       nodeIntegration: true
     }
   });
-  //Load the html for mainWIndow
+  //Load the html for mainWindow
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'views/mainWindow.html'),
     protocol: 'file:',
@@ -65,10 +65,13 @@ openTimerWindow = () => {
 }
 
 // event listeners
-// ipcMain.on('selectedTime', ())
+ipcMain.on('alwaysOnTop', () => {
+  mainWindow.setAlwaysOnTop(true, 'screen');
+});
+
 ipcMain.on('openTimerWindow', () => {
   openTimerWindow();
-})
+});
 
 ipcMain.on('selectedTime', function (e,id) {
   if(id == null) {
