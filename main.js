@@ -65,8 +65,8 @@ openTimerWindow = () => {
 }
 
 // event listeners
-ipcMain.on('alwaysOnTop', () => {
-  mainWindow.setAlwaysOnTop(true, 'screen');
+ipcMain.on('topOrBottom', (e,show) => {
+  mainWindow.setAlwaysOnTop(show, 'screen');
 });
 
 ipcMain.on('openTimerWindow', () => {

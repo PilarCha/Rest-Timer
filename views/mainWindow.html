@@ -100,6 +100,7 @@
       document.getElementsByClassName("row")[1].style.display = 'block';
       document.getElementsByClassName("row")[1].style.display = 'block';
       document.getElementsByTagName("nav")[0].style.display = 'block';
+      ipcRenderer.send('topOrBottom',false);
       openTimerWindow();
     }
 
@@ -109,7 +110,7 @@
       document.getElementsByClassName("row")[1].style.display = 'none';
       document.getElementsByTagName("nav")[0].style.display = 'none';
       window.resizeTo(225,209);
-      ipcRenderer.send('alwaysOnTop');
+      ipcRenderer.send('topOrBottom',true);
       //add a pause function for pausing the clock
       timerInterval = setInterval(() => {
         timePassed = timePassed += 1;
@@ -119,7 +120,8 @@
         setRemainingPathColor(timeLeft);
 
         if (timeLeft === 0) {
-          // onTimesUp();
+          ipcRenderer.send('topOrBottom',false);
+          openTimerWindow();
           location.reload();
           window.resizeTo(300,429);
         }
