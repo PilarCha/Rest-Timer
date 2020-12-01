@@ -27,6 +27,10 @@ app.on('ready', () => {
     protocol: 'file:',
     slashes: true
   }));
+
+  mainWindow.webContents.on('did-finish-load', () => {
+    mainWindow.show();
+  })
   //Quit app when closing main window if needed
   mainWindow.on('closed', () => {
     app.quit();
@@ -58,6 +62,10 @@ openTimerWindow = () => {
     protocol:'file',
     slashes:true
   }));
+
+  timerWindow.webContents.on('did-finish-load' , () => {
+    timerWindow.show();
+  })
   // garbage collection handle
   timerWindow.on('close', () => {
     timerWindow = null;
