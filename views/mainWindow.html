@@ -92,9 +92,8 @@
     ipcRenderer.on('selectedTime',function(e,seconds) {
       TIME_LIMIT = seconds
     });
-    //used to start the timer
 
-    //when timer reaches 0
+    //this does no get called. Causes to keep timer running after times up
     function onTimesUp() {
       //clearInterval(timerInterval);
       document.getElementsByClassName("row")[1].style.display = 'block';
@@ -110,7 +109,7 @@
       document.getElementsByClassName("row")[1].style.display = 'none';
       document.getElementsByTagName("nav")[0].style.display = 'none';
       window.resizeTo(225,209);
-      window.moveTo(2350,1000);
+      window.moveTo(2350,1200);
       ipcRenderer.send('topOrBottom',true);
       //add a pause function for pausing the clock
       timerInterval = setInterval(() => {
