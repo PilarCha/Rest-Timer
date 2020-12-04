@@ -55,7 +55,7 @@
       }
     };
     let timePassed = 0;
-    let TIME_LIMIT = 10;
+    let TIME_LIMIT = null;
     let timeLeft = TIME_LIMIT;
     let timerInterval = null;
     let remainingPathColor = COLOR_CODES.info.color;
@@ -90,7 +90,8 @@
 
     //catch seconds sent from select Timer window
     ipcRenderer.on('selectedTime',function(e,seconds) {
-      TIME_LIMIT = seconds
+      document.getElementById("base-timer-label").innerHTML = formatTime(seconds);
+      TIME_LIMIT = seconds;
     });
 
     //this does no get called. Causes to keep timer running after times up
