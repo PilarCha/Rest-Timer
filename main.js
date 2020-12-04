@@ -18,7 +18,8 @@ app.on('ready', () => {
     y:990,
     frame: false,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      //contextIsolation: true
     }
   });
   //Load the html for mainWindow
@@ -47,12 +48,14 @@ openTimerWindow = () => {
   timerWindow = new BrowserWindow ({
     width:300,
     height: 429,
-    x:2260,
+    //x:2260,
+    x:1960,
     y:990,
     title:'Select Time Limit',
     frame: false,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      //contextIsolation: true
     }
   });
 
