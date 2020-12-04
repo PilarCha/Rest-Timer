@@ -65,8 +65,7 @@
         <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
           <g class="base-timer__circle">
             <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
-            <path
-              id="base-timer-path-remaining"
+            <path id="base-timer-path-remaining"
               stroke-dasharray="283"
               class="base-timer__path-remaining ${remainingPathColor}"
               d="
@@ -74,37 +73,20 @@
                 m -45, 0
                 a 45,45 0 1,0 90,0
                 a 45,45 0 1,0 -90,0
-              "
-            ></path>
+              ">
+            </path>
           </g>
         </svg>
-        <span id="base-timer-label" class="base-timer__label">${formatTime(
-          timeLeft
-        )}</span>
+        <span id="base-timer-label" class="base-timer__label">${formatTime(timeLeft)}</span>
     </div>
     `;
 
-    function openTimerWindow() {
-      ipcRenderer.send('openTimerWindow');
-    }
-
-    //catch seconds sent from select Timer window
-    ipcRenderer.on('selectedTime',function(e,seconds) {
-      document.getElementById("base-timer-label").innerHTML = formatTime(seconds);
-      TIME_LIMIT = seconds;
-    });
-
-    //this does no get called. Causes to keep timer running after times up
-    function onTimesUp() {
-      //clearInterval(timerInterval);
-      document.getElementsByClassName("row")[1].style.display = 'block';
-      document.getElementsByClassName("row")[1].style.display = 'block';
-      document.getElementsByTagName("nav")[0].style.display = 'block';
-      ipcRenderer.send('topOrBottom',false);
-      openTimerWindow();
-    }
-
     function startTimer() {
+      if(TIME_LIMIT === null) {
+        alert('Please select a time to start the countdown');
+        openTimerWindow();
+        return;
+      }
       //hide the start button
       document.getElementsByClassName("row")[1].style.display = 'none';
       document.getElementsByClassName("row")[1].style.display = 'none';
@@ -121,15 +103,31 @@
         setRemainingPathColor(timeLeft);
 
         if (timeLeft === 0) {
-          ipcRenderer.send('topOrBottom',false);
-          openTimerWindow();
-          location.reload();
-          window.resizeTo(300,429);
-          window.moveTo(2260,1400);
+          onTimesUp();
         }
       }, 1000);
     }
 
+    function onTimesUp() {
+      ipcRenderer.send('topOrBottom',false);
+      openTimerWindow();
+      location.reload();
+      window.resizeTo(300,429);
+      window.moveTo(2260,1400);
+      document.getElementById("base-timer-label").innerHTML = formatTime(TIME_LIMIT);
+    }
+
+    function openTimerWindow() {
+      ipcRenderer.send('openTimerWindow');
+    }
+
+    //catch seconds sent from select Timer window
+    ipcRenderer.on('selectedTime',function(e,seconds) {
+      document.getElementById("base-timer-label").innerHTML = formatTime(seconds);
+      TIME_LIMIT = seconds;
+    });
+
+    //helper functions to setup the circle
     function formatTime(timeLeft) {
       const minutes = Math.floor(timeLeft / 60);
       let seconds = timeLeft % 60;
