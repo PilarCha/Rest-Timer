@@ -47,7 +47,7 @@ app.on('ready', () => {
 openTimerWindow = () => {
   if(timerWindow != null) {
     timerWindow.focus()
-    return;  
+    return;
   }
   timerWindow = new BrowserWindow ({
     width:300,
@@ -76,6 +76,30 @@ openTimerWindow = () => {
   // garbage collection handle
   timerWindow.on('close', () => {
     timerWindow = null;
+  })
+}
+
+openCongratsWindow = () => {
+  congratsWindow = new BrowserWindow ({
+    title: 'Congrats you did it!',
+    frame: false,
+    webPreferences: {
+      nodeIntegration: true,
+    }
+  });
+
+  congratsWindow.loadURL(url.format({
+    pathname:path.join(__dirname,'views/congratsWindow.html'),
+    protocol:'file',
+    slashes:true
+  }));
+
+  congratsWindow.webContents.on('did-finish-load' , () => {
+    congratsWindow.show();
+  })
+  // garbage collection handle
+  congratsWindow.on('close', () => {
+    congratsWindow = null;
   })
 }
 
