@@ -45,6 +45,10 @@ app.on('ready', () => {
 
 //select timer window
 openTimerWindow = () => {
+  if(timerWindow != null) {
+    timerWindow.focus()
+    return;  
+  }
   timerWindow = new BrowserWindow ({
     width:300,
     height: 429,
