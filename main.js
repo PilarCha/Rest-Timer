@@ -10,39 +10,61 @@ let timerWindow;
 //uncomment for productin environment
 //process.env.NODE_ENV = 'production';
 //Logic for windows
+// app.on('ready', () => {
+//   mainWindow = new BrowserWindow({
+//     width:300,
+//     height:429,
+//     x:2260,
+//     y:990,
+//     frame: false,
+//     webPreferences: {
+//       nodeIntegration: true,
+//       //contextIsolation: true
+//     }
+//   });
+//   //Load the html for mainWindow
+//   mainWindow.loadURL(url.format({
+//     pathname: path.join(__dirname, 'views/mainWindow.html'),
+//     protocol: 'file:',
+//     slashes: true
+//   }));
+//
+//   mainWindow.webContents.on('did-finish-load', () => {
+//     mainWindow.show();
+//   })
+//   //Quit app when closing main window if needed
+//   mainWindow.on('closed', () => {
+//     app.quit();
+//   });
+//   //build menu from template
+//   const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
+//   //Insert Menu
+//   Menu.setApplicationMenu(mainMenu)
+//   openTimerWindow();
+// })
 app.on('ready', () => {
-  mainWindow = new BrowserWindow({
-    width:300,
-    height:429,
-    x:2260,
-    y:990,
-    frame: false,
+  congratsWindow = new BrowserWindow ({
+    title: 'Congrats you did it!',
+    // frame: false,
     webPreferences: {
       nodeIntegration: true,
-      //contextIsolation: true
     }
   });
-  //Load the html for mainWindow
-  mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'views/mainWindow.html'),
-    protocol: 'file:',
-    slashes: true
+
+  congratsWindow.loadURL(url.format({
+    pathname:path.join(__dirname,'views/congratsWindow.html'),
+    protocol:'file',
+    slashes:true
   }));
 
-  mainWindow.webContents.on('did-finish-load', () => {
-    mainWindow.show();
+  congratsWindow.webContents.on('did-finish-load' , () => {
+    congratsWindow.show();
   })
-  //Quit app when closing main window if needed
-  mainWindow.on('closed', () => {
-    app.quit();
-  });
-  //build menu from template
-  const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
-  //Insert Menu
-  Menu.setApplicationMenu(mainMenu)
-  openTimerWindow();
+  // garbage collection handle
+  congratsWindow.on('close', () => {
+    congratsWindow = null;
+  })
 })
-
 //select timer window
 openTimerWindow = () => {
   if(timerWindow != null) {
@@ -80,6 +102,9 @@ openTimerWindow = () => {
 }
 
 openCongratsWindow = () => {
+  if(congratsWindow != null) {
+
+  }
   congratsWindow = new BrowserWindow ({
     title: 'Congrats you did it!',
     frame: false,
