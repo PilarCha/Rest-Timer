@@ -64,6 +64,8 @@ app.on('ready', () => {
   congratsWindow.on('close', () => {
     congratsWindow = null;
   })
+
+  congratsWindow.setAlwaysOnTop(true);
 })
 //select timer window
 openTimerWindow = () => {

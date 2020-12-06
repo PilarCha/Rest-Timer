@@ -1,7 +1,17 @@
 body {
-  background-color:#222222;
+  background: #222222;
 }
 
-h5 {
+.test-completion {
+  /* display: none; */
+  z-index: 1000;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 300px;
+  padding: 2em 10px;
   text-align: center;
+  background-color: #fff;
+  box-shadow: 0px 10px 30px rgba(0,0,0,.1);
 }
