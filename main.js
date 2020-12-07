@@ -45,8 +45,11 @@ let timerWindow;
 app.on('ready', () => {
   congratsWindow = new BrowserWindow ({
     title: 'Congrats you did it!',
-
-    // frame: false,
+    width:300,
+    height:429,
+    x:2260,
+    y:990,
+    frame: false,
     webPreferences: {
       nodeIntegration: true,
     }

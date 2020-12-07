@@ -1,30 +1,29 @@
 <!DOCTYPE html>
-<html lang='en' dir='ltr'>
+<html lang="en" dir="ltr">
   <head>
-    <meta charset='utf-8'>
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css'>
-    <link rel='stylesheet' href='./../css/congratsWindow.css'>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="./../css/congratsWindow.css">
     <title>Select Time</title>
   </head>
   <body>
-    <div class='test-completion'>
-      <div class='container'>
-        <img class='trophy' src='https://image.flaticon.com/icons/svg/321/321773.svg' alt='award'>
-        <span class = 'title'>Times Up!</span>
-        <span class = 'score'></span>
-        <p class = 'wiseWords'></p>
+    <div class="test-completion">
+      <div class="container">
+        <img class="trophy" src="https://image.flaticon.com/icons/svg/321/321773.svg" alt="award">
+        <span class = "title">Times Up!</span>
+        <span class = "score"></span>
       </div>
-      <button class="btn waves-effect waves-teal red" type="submit" name="action" onclick="cancel()">Cancel
+      <button class="btn waves-effect waves-teal red" type="submit" name="action" onclick="finish()">Thank You
         <i class="material-icons right"></i>
       </button>
     </div>
     <script type="text/javascript">
-      let wordWisdom = ['Hope you didnt cheat.', 'One in four people suck but not you!'];
-      console.log(Math.floor(Math.random() * wordWisdom.length))
+      finish = () => {
+        const electron = require("electron");
+        const {ipcRenderer} = electron;
 
-
-
-
+        ipcRenderer.send("restartEverything");
+      }
     </script>
   </body>
 </html>
