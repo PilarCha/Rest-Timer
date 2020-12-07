@@ -109,15 +109,13 @@ openTimerWindow = () => {
 }
 
 openCongratsWindow = () => {
-  if(congratsWindow != null) {
 
-  }
   congratsWindow = new BrowserWindow ({
     title: 'Congrats you did it!',
     width:300,
     height:280,
     x:2260,
-    y:990,
+    y:900,
     frame: false,
     webPreferences: {
       nodeIntegration: true,
@@ -137,9 +135,14 @@ openCongratsWindow = () => {
   congratsWindow.on('close', () => {
     congratsWindow = null;
   })
+  congratsWindow.setAlwaysOnTop(true);
 }
 
 // event listeners
+ipcMain.on('openCongratsWindow' , () => {
+  openCongratsWindow();
+})
+
 ipcMain.on('topOrBottom', (e,show) => {
   mainWindow.setAlwaysOnTop(show, 'screen');
 });
