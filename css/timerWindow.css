@@ -2,6 +2,11 @@ body {
   background-color:#222222;
 }
 
+.container {
+  width:100% !important;
+}
+
+
 h5 {
   text-align: center;
 }
