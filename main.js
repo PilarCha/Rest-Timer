@@ -42,35 +42,7 @@ app.on('ready', () => {
   Menu.setApplicationMenu(mainMenu)
   openTimerWindow();
 })
-// app.on('ready', () => {
-//   congratsWindow = new BrowserWindow ({
-//     title: 'Congrats you did it!',
-//     width:300,
-//     height:280,
-//     x:2260,
-//     y:990,
-//     frame: false,
-//     webPreferences: {
-//       nodeIntegration: true,
-//     }
-//   });
-//
-//   congratsWindow.loadURL(url.format({
-//     pathname:path.join(__dirname,'views/congratsWindow.html'),
-//     protocol:'file',
-//     slashes:true
-//   }));
-//
-//   congratsWindow.webContents.on('did-finish-load' , () => {
-//     congratsWindow.show();
-//   })
-//   // garbage collection handle
-//   congratsWindow.on('close', () => {
-//     congratsWindow = null;
-//   })
-//
-//   congratsWindow.setAlwaysOnTop(true);
-// })
+
 //select timer window
 openTimerWindow = () => {
   if(timerWindow != null) {
@@ -150,6 +122,10 @@ ipcMain.on('topOrBottom', (e,show) => {
 ipcMain.on('openTimerWindow', () => {
   openTimerWindow();
 });
+
+ipcMain.on('restartEverything' , () => {
+  //close congrats window and restart the main window with timer  window
+})
 
 ipcMain.on('selectedTime', function (e,id) {
   if(id == null) {
