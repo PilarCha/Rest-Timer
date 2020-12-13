@@ -9,7 +9,6 @@ let timerWindow;
 
 //uncomment for productin environment
 //process.env.NODE_ENV = 'production';
-//Logic for windows
 app.on('ready', () => {
   mainWindow = new BrowserWindow({
     width:300,
@@ -124,7 +123,8 @@ ipcMain.on('openTimerWindow', () => {
 });
 
 ipcMain.on('restartEverything' , () => {
-  //close congrats window and restart the main window with timer  window
+  congratsWindow.close();
+  openTimerWindow();
 })
 
 ipcMain.on('selectedTime', function (e,id) {
