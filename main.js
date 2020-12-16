@@ -10,11 +10,14 @@ let timerWindow;
 //uncomment for productin environment
 //process.env.NODE_ENV = 'production';
 app.on('ready', () => {
+  let display = electron.screen.getPrimaryDisplay();
+  let width = display.bounds.width;
+  let height = display.bounds.height;
   mainWindow = new BrowserWindow({
     width:300,
     height:429,
-    x:2260,
-    y:990,
+    x:width - 300,
+    y:height - 429,
     frame: false,
     webPreferences: {
       nodeIntegration: true,
@@ -48,12 +51,15 @@ openTimerWindow = () => {
     timerWindow.focus()
     return;
   }
+  let display = electron.screen.getPrimaryDisplay();
+  let width = display.bounds.width;
+  let height = display.bounds.height;
   timerWindow = new BrowserWindow ({
     width:300,
-    height: 429,
-    x:2260,
+    height: 370,
+    x:width - 300,
     // x:1960,
-    y:990,
+    y:height - 370,
     title:'Select Time Limit',
     frame: false,
     webPreferences: {
@@ -80,13 +86,15 @@ openTimerWindow = () => {
 }
 
 openCongratsWindow = () => {
-
+  let display = electron.screen.getPrimaryDisplay();
+  let width = display.bounds.width;
+  let height = display.bounds.height;
   congratsWindow = new BrowserWindow ({
     title: 'Congrats you did it!',
     width:300,
     height:280,
-    x:2260,
-    y:900,
+    x:width - 300,
+    y:height - 280,
     frame: false,
     webPreferences: {
       nodeIntegration: true,
@@ -112,6 +120,7 @@ openCongratsWindow = () => {
 // event listeners
 ipcMain.on('openCongratsWindow' , () => {
   openCongratsWindow();
+  mainWindow.minimize();
 })
 
 ipcMain.on('topOrBottom', (e,show) => {
