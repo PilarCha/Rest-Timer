@@ -59,7 +59,7 @@ openTimerWindow = () => {
     height: 370,
     x:width - 300,
     // x:1960,
-    y:height - 370,
+    y:height - 429,
     title:'Select Time Limit',
     frame: false,
     webPreferences: {
@@ -117,6 +117,11 @@ openCongratsWindow = () => {
   congratsWindow.setAlwaysOnTop(true);
 }
 
+resizeMainWindow = () => {
+  mainWindow.setSize(300,200);
+
+}
+
 // event listeners
 ipcMain.on('openCongratsWindow' , () => {
   openCongratsWindow();
@@ -133,6 +138,7 @@ ipcMain.on('openTimerWindow', () => {
 
 ipcMain.on('restartEverything' , () => {
   congratsWindow.close();
+  resizeMainWindow();
   openTimerWindow();
 })
 
