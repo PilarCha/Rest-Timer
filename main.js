@@ -118,7 +118,8 @@ openCongratsWindow = () => {
 }
 
 resizeMainWindow = () => {
-  mainWindow.setSize(300,200);
+  //mainWindow.setSize(300,200);
+  mainWindow.setBounds({x:2270, y:1050, width:300, height:360});
 
 }
 
