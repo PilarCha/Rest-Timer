@@ -1,9 +1,14 @@
 body {
-  background-color:#222222;
+  background-color:var(--dark-gray);
+}
+
+:root {
+  --grayish-blue: hsl(218,22%, 67%);
+  --dark-gray: #222222;
 }
 
 .container {
-  width:100% !important;
+  display: block;
 }
 
 
@@ -20,5 +25,6 @@ h5 {
 }
 
 .collection-item {
-  background-color: #222222 !important;
+  display: block;
+  background-color: var(--dark-gray) !important;
 }

@@ -59,7 +59,8 @@ openTimerWindow = () => {
     height: 370,
     x:width - 300,
     // x:1960,
-    y:height - 429,
+    //y:height - 429,
+    y: height - 400,
     title:'Select Time Limit',
     frame: false,
     webPreferences: {
