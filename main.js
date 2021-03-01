@@ -15,9 +15,9 @@ app.on('ready', () => {
   let height = display.bounds.height;
   mainWindow = new BrowserWindow({
     width:300,
-    height:429,
+    height:400,
     x:width - 300,
-    y:height - 429,
+    y:height - 400,
     frame: false,
     webPreferences: {
       nodeIntegration: true,
