@@ -81,7 +81,7 @@
     </div>
     `;
 
-    function startTimer() {
+    function startTimer(breakTime) {
       if(TIME_LIMIT === null) {
         alert('Please select a time to start the countdown');
         openTimerWindow();
@@ -103,16 +103,25 @@
         setRemainingPathColor(timeLeft);
 
         if (timeLeft === 0) {
-          onTimesUp();
+          onTimesUp(breakTime);
         }
       }, 1000);
     }
 
-    function onTimesUp() {
-      openCongratsWindow();
-      location.reload();
-      window.resizeTo(300,429);
-      window.moveTo(2260,1400);
+    function onTimesUp(breakTime) {
+      if(breakTime == true) {
+        location.reload();
+        window.resizeTo(300,360);
+        window.moveTo(2260,1040);
+        openTimerWindow();
+      }
+      else {
+        openCongratsWindow();
+        location.reload();
+        window.resizeTo(300,400);
+        window.moveTo(2260,1040);
+      }
+
     }
 
     function openCongratsWindow() {
@@ -127,7 +136,7 @@
     ipcRenderer.on('selectedTime',function(e,seconds,breakTime) {
       document.getElementById("base-timer-label").innerHTML = formatTime(seconds);
       TIME_LIMIT = seconds;
-      if(breakTime) startTimer();
+      if(breakTime === true) startTimer(breakTime);
     });
 
     //helper functions to setup the circle

@@ -13,6 +13,8 @@ app.on('ready', () => {
   let display = electron.screen.getPrimaryDisplay();
   let width = display.bounds.width;
   let height = display.bounds.height;
+  console.log('the width is' + width);
+  console.log('the height is ' + height);
   mainWindow = new BrowserWindow({
     width:300,
     height:400,
@@ -141,7 +143,9 @@ ipcMain.on('openTimerWindow', () => {
 ipcMain.on('startBreak' , () => {
   congratsWindow.close();
   resizeMainWindow();
-  let seconds = 300;
+  // let seconds = 300;
+  // debug
+  let seconds = 3;
   mainWindow.webContents.send('selectedTime',seconds,true);
   mainWindow.setAlwaysOnTop(true);
 
