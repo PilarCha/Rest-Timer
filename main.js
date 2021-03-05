@@ -13,8 +13,6 @@ app.on('ready', () => {
   let display = electron.screen.getPrimaryDisplay();
   let width = display.bounds.width;
   let height = display.bounds.height;
-  console.log('the width is' + width);
-  console.log('the height is ' + height);
   mainWindow = new BrowserWindow({
     width:300,
     height:400,
