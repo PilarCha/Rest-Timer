@@ -138,10 +138,13 @@ ipcMain.on('openTimerWindow', () => {
   openTimerWindow();
 });
 
-ipcMain.on('restartEverything' , () => {
+ipcMain.on('startBreak' , () => {
   congratsWindow.close();
   resizeMainWindow();
-  openTimerWindow();
+  let seconds = 300;
+  mainWindow.webContents.send('selectedTime',seconds);
+  mainWindow.setAlwaysOnTop(true);
+
 })
 
 ipcMain.on('selectedTime', function (e,id) {

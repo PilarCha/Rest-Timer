@@ -15,7 +15,7 @@
         <span class = "title">Times Up!</span>
         <span class = "score"></span>
       </div>
-      <button class="btn waves-effect waves-teal red" type="submit" name="action" onclick="finish()">Thank You
+      <button class="btn waves-effect waves-teal red" type="submit" name="action" onclick="finish()">Take break
         <i class="material-icons right"></i>
       </button>
     </div>
@@ -24,7 +24,8 @@
         const electron = require("electron");
         const {ipcRenderer} = electron;
 
-        ipcRenderer.send("restartEverything");
+        ipcRenderer.send("startBreak");
+
       }
     </script>
   </body>
