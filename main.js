@@ -93,9 +93,9 @@ openCongratsWindow = () => {
   congratsWindow = new BrowserWindow ({
     title: 'Congrats you did it!',
     width:300,
-    height:280,
+    height:260,
     x:width - 300,
-    y:height - 280,
+    y:height - 300,
     frame: false,
     webPreferences: {
       nodeIntegration: true,
@@ -142,7 +142,7 @@ ipcMain.on('startBreak' , () => {
   congratsWindow.close();
   resizeMainWindow();
   let seconds = 300;
-  mainWindow.webContents.send('selectedTime',seconds);
+  mainWindow.webContents.send('selectedTime',seconds,true);
   mainWindow.setAlwaysOnTop(true);
 
 })
@@ -154,7 +154,7 @@ ipcMain.on('selectedTime', function (e,id) {
     return;
   }
   let seconds = (id/5) * 300
-  mainWindow.webContents.send('selectedTime',seconds);
+  mainWindow.webContents.send('selectedTime',seconds,false);
   timerWindow.close();
   mainWindow.setAlwaysOnTop(true);
 })
